@@ -8,6 +8,7 @@
   <title>AVTR by Mercedes Benz</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/slick.css">
@@ -17,7 +18,7 @@
 
 <body>
 
-  <header class="header">
+  <header class="header" id="home">
     <div class="container">
       <div class="header__top">
         <button class="header__nav">
@@ -86,7 +87,7 @@
             основой создания VISION
             AVTR.</p>
           <img src="images/premier_1.jpg" alt="" class="premier__img">
-          <button class="premier__btn">more</button>
+          <button class="premier__btn modal-btn">more</button>
         </div>
         <div class="premier__column">
           <img src="images/premier_2.png" alt="" class="premier__img">
@@ -99,6 +100,19 @@
       </div>
     </div>
   </section>
+
+
+  <!-- Test modal. -->
+  <!-- <div class="modal-overlay">
+    <div class="modal-container">
+      <h3>Hello! This is test-modal.</h3>
+
+      <p class="modal-text">
+        Wowwwww
+      </p>
+      <button class="close-btn"><i class="fa fa-times"></i></button>
+    </div>
+  </div> -->
 
   <div class="video">
     <div class="container">
@@ -193,9 +207,15 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
-        <a href="#" class="footer__link">
-          Политика конфиденциальности
-        </a>
+        <div class="footer__inner-two">
+          <a href="#" class="footer__link">
+            Политика конфиденциальности.
+            <div class="footer__dev">
+              Developed by<span> Saviorov.</span><a href="https://vk.com/saviorov"></a>
+              <div class="span" id="date"></div>
+            </div>
+          </a>
+        </div>
         <a href="#" class="logo">
           <img src="images/logo.svg" alt="logo" class="logo__img">
         </a>
@@ -219,7 +239,11 @@
       </div>
     </div>
   </footer>
-  
+
+  <a class="scroll-link top-link" href="#home">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="js/slick.min.js"></script>
   <script src="js/jquery.fancybox.min.js"></script>
