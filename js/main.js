@@ -1,35 +1,21 @@
-// SLIDER
-$(function () {
-    $('.design-slider').slick({
-        slidesToShow: 4,
-        variableWidth: true,
-        prevArrow: '<img src="images/arrow-left.svg" class="arrow arrow-left" alt="">',
-        nextArrow: '<img src="images/arrow-right.svg" class="arrow arrow-right" alt="">',
-        responsive: [
-            {
-                breakpoint: 361,
-                settings: {
-                    variableWidth: false,
-                    slidesToShow: 1,
-                }
-            }
-        ]
-    });
-});
 
+// ACTUAL YEAR
+const date = document.getElementById('date');
+date.innerHTML = new Date().getUTCFullYear();
 
-// modal-btn
-// const modalBtn = document.querySelector(".modal-btn");
-// const modal = document.querySelector(".modal-overlay");
-// const closeBtn = document.querySelector(".close-btn");
+// Sidebar
 
-// modalBtn.addEventListener("click", function () {
-//     modal.classList.add("open-modal");
-// });
-// closeBtn.addEventListener("click", function () {
-//     modal.classList.remove("open-modal");
-// });
+const toggleBtn = document.querySelector('.sidebar-toggle');
+const closeBtn = document.querySelector('.close-btn');
+const sidebar = document.querySelector('.sidebar');
 
+toggleBtn.addEventListener('click', function () {
+    sidebar.classList.toggle("show-sidebar")
+})
+
+closeBtn.addEventListener('click', function () {
+    sidebar.classList.remove('show-sidebar')
+})
 
 
 // FIXED NAVBAR
@@ -53,6 +39,44 @@ window.addEventListener('scroll', function () {
     };
 });
 
-// ACTUAL YEAR
-const date = document.getElementById('date');
-date.innerHTML = new Date().getUTCFullYear();
+// close links
+const linksContainer = document.querySelector('.links__container');
+const links = document.querySelector('.links');
+
+toggleBtn.addEventListener('click', function () {
+    const containerHeight = linksContainer.getBoundingClientRect().height; ///вычилясем высоту линков
+    const linksHeight = links.getBoundingClientRect().height;
+    if (containerHeight === 0) {
+        linksContainer.style.height = `${linksHeight}px`
+    } else {
+        linksContainer.style.height = 0;
+    }
+})
+
+
+// smooth-scroll
+const scrollLinks = document.querySelectorAll('.scroll-link');
+
+scrollLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+        e.preventDefault;
+        const id = e.currentTarget.getAttribute('href').slice(1);
+        const element = document.getElementById(id);
+
+        const navHeight = navbar.getBoundingClientRect().height;
+        const containerHeight = linksContainer.getBoundingClientRect().height;
+        const fixedNav = navbar.classList.contains('fixed-nav');
+        let position = element.offsetTop - navHeight;
+        if (!fixedNav) {
+            position = position - navHeight
+        }
+        if (navHeight > 82) {
+            position = position + containerHeight;
+        }
+
+        window.scrollTo({
+            left: 0, top: position,
+        });
+        linksContainer.style.heigth = 0;
+    });
+});
