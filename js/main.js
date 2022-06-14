@@ -60,6 +60,7 @@ const scrollLinks = document.querySelectorAll('.scroll-link');
 scrollLinks.forEach(function (link) {
     link.addEventListener('click', function (e) {
         e.preventDefault;
+        sidebar.classList.remove('show-sidebar');
         const id = e.currentTarget.getAttribute('href').slice(1);
         const element = document.getElementById(id);
 
